@@ -1,8 +1,7 @@
 import React from 'react';
 import { EpisodeType } from '../types/EpisodeType';
 
-export const EpisodeCell = ({ title, thumbn, description, keywords } : EpisodeType) => {
-
+export const EpisodeCell: React.FC<EpisodeType> = ({ title, thumbn, description, keywords }) => {
     return (
         <li>
             <h2>{title}</h2>

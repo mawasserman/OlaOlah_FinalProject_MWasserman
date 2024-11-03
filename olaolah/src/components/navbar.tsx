@@ -17,7 +17,7 @@ export const Navbar = () => {
                     <li><a href="/signup">Signup</a></li>
                 </ul>
                 <ul id='downNav'>
-                    <li></Home></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="/episodes">Episodes</a></li>
                     <li><a href="/about">About</a></li>                    
                     <li><a href="/contact">Contact</a></li>

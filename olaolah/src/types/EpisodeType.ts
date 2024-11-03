@@ -3,4 +3,5 @@ export type EpisodeType = {
     thumbn: string;
     description: string;
     keywords: string[];
+    releaseDate: string;
 }

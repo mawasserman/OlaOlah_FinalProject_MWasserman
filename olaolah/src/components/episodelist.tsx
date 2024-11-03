@@ -1,18 +1,21 @@
+// src/components/EpisodeList.tsx
+
 import React from 'react';
-import { EpisodeCell } from './episodecell';
+import EpisodeCell from './episodecell.tsx';
 import { episodes } from '../data/episodeslist';
 import { EpisodeType } from '../types/EpisodeType';
 
 const EpisodeList: React.FC = () => {
     return (
         <ul> 
-            {episodes.map((episode: EpisodeType, index) => (
+            {episodes.map((episode: EpisodeType) => (
                 <EpisodeCell 
-                    key={index} 
+                    key={episode.title} // Preferably use a unique identifier
                     title={episode.title} 
                     thumbn={episode.thumbn} 
                     description={episode.description} 
                     keywords={episode.keywords} 
+                    releaseDate={episode.releaseDate}
                 />
             ))}            
         </ul>
@@ -20,5 +23,3 @@ const EpisodeList: React.FC = () => {
 }
 
 export default EpisodeList;
-
-

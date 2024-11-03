@@ -1,39 +1,25 @@
+// src/App.tsx
+
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/navbar';
-import EpisodeList from './components/episodelist';
-import Footer from './components/Footer.tsx';
-import Header from './components/Header.tsx';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/navbar.tsx';
+import Home from './pages/Home.tsx';
+import Episodes from './pages/Episodes.tsx';
+import About from './pages/About.tsx';
+import Contact from './pages/Contact.tsx';
 
 function App() {
-  return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Header 
-          title="Olá Olah Podcast" 
-          description="Hello, or better, Olá! The podcast of two Brazilians that decided to do aliah and live as Olah" 
-          bannerImage="/path/to/banner-image.jpg"
-        />
-        
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/episodes" element={<EpisodeList />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        
-        <Footer />
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/episodes" element={<Episodes />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+            </Routes>
+        </Router>
+    );
 }
-
-const Home = () => <div>Welcome to the Podcast!</div>;
-const About = () => <div>About this podcast...</div>;
-const Contact = () => <div>Contact us!</div>;
 
 export default App;
