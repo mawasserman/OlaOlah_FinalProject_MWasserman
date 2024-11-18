@@ -16,6 +16,7 @@ export const Navbar = () => {
                     <li><a href="/login">Login</a></li>
                     <li><a href="/signup">Signup</a></li>
                 </ul>
+                <img src="..\public\Petah_Tikva.jpg" alt="Petach Tikva" />
                 <ul id='downNav'>
                     <li><a href="/">Home</a></li>
                     <li><a href="/episodes">Episodes</a></li>
