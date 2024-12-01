@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+# OlaOlah_FinalProject_MWasserman
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
+OlaOlah is a final project developed by Marcella Wasserman at Developers Institute. This project aims to create a podcast hosted by two Brazilians to provide entertaiment while talking about challenges of living in Israel and raising israeli children.
 
-Currently, two official plugins are available:
+## Features
+- Feature 1: Home page with the last episode uploaded
+- Feature 2: List of all episodes
+- Feature 3 (to be implemented): Login for users to comment and share episodes & login for admin to upload episodes straight to database.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
+To install and run this project locally, follow these steps:
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/OlaOlah_FinalProject_MWasserman.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd OlaOlah_FinalProject_MWasserman/olaolah
+    ```
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Usage
+To start the application, run:
+```bash
+npm run dev
 ```
+Open your browser and navigate to `http://localhost:5173` to see the application in action.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Contact
+For any questions or feedback, please contact Marcella Wasserman.
