@@ -11,12 +11,13 @@ export const Navbar = () => {
                             <button type="submit">Search</button>
                         </form>
                     </li>                    
-                    <li><a href="https://www.facebook.com">Facebook</a></li>
+                    <li><a href="https://www.facebook.com/OlaOlahPodcast/">Facebook</a></li>
                     <li><a href="https://www.twitter.com">Twitter</a></li>
                     <li><a href="/login">Login</a></li>
                     <li><a href="/signup">Signup</a></li>
                 </ul>
-                <img src="..\public\Petah_Tikva.jpg" alt="Petach Tikva" />
+                <div id='main-img'></div>
+                {/* <img src="/OlaOlah.png" alt="Test Image" /> */}
                 <ul id='downNav'>
                     <li><a href="/">Home</a></li>
                     <li><a href="/episodes">Episodes</a></li>

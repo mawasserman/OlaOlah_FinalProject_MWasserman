@@ -10,7 +10,7 @@ const EpisodeList: React.FC = () => {
         <ul> 
             {episodes.map((episode: EpisodeType) => (
                 <EpisodeCell 
-                    key={episode.title} // Preferably use a unique identifier
+                    key={episode.title}
                     title={episode.title} 
                     thumbn={episode.thumbn} 
                     description={episode.description} 
