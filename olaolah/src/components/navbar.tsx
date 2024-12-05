@@ -4,20 +4,19 @@ export const Navbar = () => {
     return (
         <>
             <nav>
-                <ul id='upNav'>
-                    <li>
-                        <form action="/search" method="get">
-                            <input type="text" name="query" placeholder="Search..." />
-                            <button type="submit">Search</button>
-                        </form>
-                    </li>                    
-                    <li><a href="https://www.facebook.com/OlaOlahPodcast/">Facebook</a></li>
-                    <li><a href="https://www.twitter.com">Twitter</a></li>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/signup">Signup</a></li>
-                </ul>
+                <div id='upNav'>
+                    <form action="/search" method="get" >
+                        <input type="text" name="query" placeholder="Search..." />
+                        <button type="submit">Search</button>
+                    </form>
+                    <ul id='listLinks'>                                    
+                        <li><a href="https://www.facebook.com/OlaOlahPodcast/"><img src='/icons/facebook.png' /></a></li>
+                        <li><a href="https://www.twitter.com"><img src='/icons/xtwitter.png' /></a></li>
+                        <li><a href="/login"><img src='/icons/spotify.png' /></a></li>
+                        <li><a href="/signup"><img src='/icons/singup.png' /></a></li>
+                    </ul>
+                </div>
                 <div id='main-img'></div>
-                {/* <img src="/OlaOlah.png" alt="Test Image" /> */}
                 <ul id='downNav'>
                     <li><a href="/">Home</a></li>
                     <li><a href="/episodes">Episodes</a></li>

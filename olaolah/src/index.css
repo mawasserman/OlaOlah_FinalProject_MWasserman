@@ -13,7 +13,14 @@ h1, h2, h3 {
 
 a {
   text-decoration: none;
-  color: white;
+  color: rgb(40, 145, 139);
+  font-family: 'Times New Roman';
+  font-weight: 900;
+  font-size: 1.5rem;
+  padding: 10px;
+  margin: 5px;
+
+  
 }
 
 a:hover {
@@ -22,8 +29,8 @@ a:hover {
 
 /* Navbar */
 nav {
-  background-color: #4b06b9;
-  color: white;
+  background-color: hwb(285 82% 3%);
+  color: rgb(57, 166, 170);
   padding: 10px 20px;
   display: flex;
   flex-direction: column;
@@ -35,6 +42,19 @@ nav {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+#listLinks {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+#listLinks li a img {
+  width: auto;
+  height: 32px;
 }
 
 #main-img {
