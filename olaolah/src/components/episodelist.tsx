@@ -1,5 +1,3 @@
-// src/components/EpisodeList.tsx
-
 import React from 'react';
 import EpisodeCell from './episodecell.tsx';
 import { episodes } from '../data/episodeslist';

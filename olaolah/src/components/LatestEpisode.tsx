@@ -15,15 +15,20 @@ const LatestEpisode: React.FC = () => {
     return (
         <div>
             <h2>Latest Episode</h2>
-            <h3>{latestEpisode.title}</h3>
-            <img src={latestEpisode.thumbn} alt={latestEpisode.title} />
-            <p>{latestEpisode.description}</p>
-            <ul>
-                {latestEpisode.keywords.map((keyword, index) => (
-                    <li key={index}>{keyword}</li>
-                ))}
-            </ul>
+            <div className='episode'>
+                <img src={latestEpisode.thumbn} alt={latestEpisode.title} className="episode-thumbnail" />
+                <div className="content">
+                    <h3 className='episode-title'>{latestEpisode.title}</h3>
+                    <p className='episode-description'>{latestEpisode.description}</p>
+                    <ul className='episode-keywords'>
+                        {latestEpisode.keywords.map((keyword, index) => (
+                            <li key={index} className='keyword'>{keyword}</li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
         </div>
+
     );
 }
 

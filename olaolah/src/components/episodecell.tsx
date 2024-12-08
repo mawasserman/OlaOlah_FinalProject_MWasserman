@@ -3,16 +3,19 @@ import { EpisodeType } from '../types/EpisodeType';
 
 export const EpisodeCell: React.FC<EpisodeType> = ({ title, thumbn, description, keywords }) => {
     return (
-        <li>
-            <h2>{title}</h2>
-            <img src={thumbn} alt={title} />
-            <p>{description}</p>
-            <ul>
-                {keywords.map((keyword, index) => (
-                    <li key={index}>{keyword}</li>
-                ))}
-            </ul>
+        <li className="episode">
+            <img src={thumbn} alt={title} className="episode-thumbnail" />
+            <div className="episode-content">
+                <h2 className="episode-title">{title}</h2>
+                <p className="episode-description">{description}</p>
+                <ul className="episode-keywords">
+                    {keywords.map((keyword, index) => (
+                        <li key={index} className="keyword">{keyword}</li>
+                    ))}
+                </ul>
+            </div>
         </li>
+
     );
 }
 
