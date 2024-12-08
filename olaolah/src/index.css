@@ -8,7 +8,7 @@ body {
 }
 
 h1, h2, h3 {
-  color: #3e8e41;
+  color: rgb(40, 145, 139);
 }
 
 a {
@@ -90,7 +90,7 @@ nav {
 
 .contact-form h1 {
   text-align: center;
-  color: #3e8e41;
+  color: rgb(40, 145, 139);
 }
 
 .contact-form label {
@@ -117,7 +117,7 @@ nav {
   margin-top: 15px;
   width: 100%;
   padding: 10px;
-  background-color: #3e8e41;
+  background-color: rgb(40, 145, 139);
   color: white;
   font-size: 1.2rem;
   border: none;
@@ -126,5 +126,5 @@ nav {
 }
 
 .contact-form button:hover {
-  background-color: #36a234;
+  background-color: #d834bd;
 }

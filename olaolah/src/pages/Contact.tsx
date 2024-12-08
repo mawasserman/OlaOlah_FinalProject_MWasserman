@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 const Contact: React.FC = () => {
@@ -15,8 +16,16 @@ const Contact: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        alert(`Message sent! Thank you, ${formData.name}`);
-        // Add form submission logic here, such as sending data to a backend.
+        try {
+            const response = await axios.post('http://your-backend-url.com/api/contact', formData);
+            console.log('Message sent successfully:', response.data);
+    
+            alert('Message sent! Thank you.');
+            setFormData({ name: '', email: '', subject: '', message: '' }); // Reset form
+        } catch (error) {
+            console.error('Error sending message:', error);
+            alert('Failed to send the message. Please try again.');
+        }
     };
 
     return (
