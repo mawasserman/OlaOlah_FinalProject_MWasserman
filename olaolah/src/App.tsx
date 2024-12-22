@@ -4,6 +4,7 @@ import Home from './pages/Home.tsx';
 import Episodes from './pages/Episodes.tsx';
 import About from './pages/About.tsx';
 import Contact from './pages/Contact.tsx';
+import Signup from './pages/Signup.tsx';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/episodes" element={<Episodes />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/signup" element={<Signup />} />
             </Routes>
         </Router>
     );
