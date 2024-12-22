@@ -1,7 +1,7 @@
 import React from 'react';
 import EpisodeCell from './episodecell.tsx';
-import { episodes } from '../data/episodeslist';
-import { EpisodeType } from '../types/EpisodeType';
+import { episodes } from '../data/episodeslist.ts';
+import { EpisodeType } from '../types/EpisodeType.ts';
 
 const EpisodeList: React.FC = () => {
     return (
