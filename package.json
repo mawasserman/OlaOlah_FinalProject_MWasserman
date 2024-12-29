@@ -18,12 +18,9 @@
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.2"
   },
-  {
-    "scripts": {
-      "dev:client": "npm run dev --prefix ./olaolah",
-      "dev:server": "npm run dev --prefix ./server",
-      "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\""
-    }
+  "scripts": {
+    "dev:client": "npm run dev --prefix ./olaolah",
+    "dev:server": "npm run dev --prefix ./server",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\""
   }
-  
 }
