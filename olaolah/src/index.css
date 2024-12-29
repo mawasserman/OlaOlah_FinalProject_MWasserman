@@ -1,4 +1,3 @@
-/* General Styles */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -27,7 +26,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Navbar */
 nav {
   background-color: hwb(285 82% 3%);
   color: rgb(57, 166, 170);
@@ -79,7 +77,7 @@ nav {
   }
 }
 
-.contact-form {
+.contact-form, .sign-up-form {
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
@@ -88,19 +86,29 @@ nav {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.contact-form, .homePage, .episodesPage h1 , .episodesPage > p {
+.sign-up-form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form> p, .sign-up-form  {
   text-align: center;
   color: rgb(40, 145, 139);
 }
 
-.contact-form label {
+.contact-form label, .sign-up-form label {
   display: block;
   margin-top: 10px;
   font-weight: bold;
+  color: #333; 
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-form input, .sign-up-form input,
+.contact-form textarea, .sign-up-form textarea {
   width: 100%;
   margin-top: 5px;
   padding: 10px;
@@ -109,11 +117,21 @@ nav {
   font-size: 1rem;
 }
 
-.contact-form textarea {
-  resize: none;
+.contact-form input[type="text"], 
+.contact-form input[type="email"], 
+.contact-form input[type="password"], 
+.sign-up-form input[type="text"], 
+.sign-up-form input[type="email"], 
+.sign-up-form input[type="password"] {
+  margin-bottom: 15px; 
 }
 
-.contact-form button {
+.contact-form textarea, .sign-up-form textarea {
+  resize: none;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+.contact-form button, .sign-up-form button {
   margin-top: 15px;
   width: 100%;
   padding: 10px;
@@ -125,9 +143,18 @@ nav {
   cursor: pointer;
 }
 
-.contact-form button:hover {
+.contact-form button:hover, 
+#submit-signup button:hover {
   background-color: #d834bd;
 }
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
 
 .latestEpisode {
   display: flex;
@@ -211,7 +238,6 @@ nav {
   color: #777; 
 }
 
-/* Styling individual keyword items */
 .keyword {
   background-color: #eaeaea; 
   padding: 2px 6px; 
@@ -224,12 +250,11 @@ nav {
   
 }
 
-/* //////////////// */
 .episode-list {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 20px; /* Add consistent spacing between items */
+  gap: 20px; 
   margin: 0 auto;
   max-width: 800px;
 }
@@ -278,3 +303,4 @@ nav {
   padding: 4px 6px;
   border-radius: 4px;
 }
+
