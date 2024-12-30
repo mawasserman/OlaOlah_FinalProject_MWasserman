@@ -16,5 +16,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["olaolah/src", "server/src/index.ts"]
+  "include": ["olaolah/src/**/*", "server/src/**/*"]
 }

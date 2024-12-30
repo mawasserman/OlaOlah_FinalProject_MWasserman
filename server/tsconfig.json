@@ -1,18 +1,36 @@
+// {
+//     "compilerOptions": {
+//       "target": "es6",
+//       "lib": ["dom", "es2015"],
+//       "jsx": "react",
+//       "module": "commonjs",
+//       "strict": true,
+//       "esModuleInterop": true,
+//       "skipLibCheck": true,
+//       "forceConsistentCasingInFileNames": true,
+//       "moduleResolution": "node",
+//       "allowJs": true,
+//       "outDir": "./dist",
+//       "rootDir": "./src"
+//     },
+//     "include": ["src/**/*"]
+//   }
+  
 {
     "compilerOptions": {
-      "target": "es6",
+      "target": "esnext",         // Use 'esnext' for better compatibility with async/await
       "lib": ["dom", "es2015"],
       "jsx": "react",
-      "module": "commonjs",
+      "module": "commonjs",       // Keep this as 'commonjs' for Node.js compatibility
       "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
+      "esModuleInterop": true,    // Necessary for compatibility with ES6 imports
+      "skipLibCheck": true,       // Skips type checking for library files
       "forceConsistentCasingInFileNames": true,
       "moduleResolution": "node",
-      "allowJs": true,
-      "outDir": "./dist",
-      "rootDir": "./src"
+      "allowJs": true,            // Allow JavaScript files if needed
+      "outDir": "./dist",         // Output directory for compiled files
+      "rootDir": "./src"          // Root directory of your TypeScript source files
     },
-    "include": ["src/**/*"]
+    "include": ["src/**/*"]       // Include all TypeScript files under 'src'
   }
   
