@@ -11,7 +11,7 @@ export const Navbar = () => {
                         <li><a href="https://www.facebook.com/OlaOlahPodcast/"><img src='/icons/facebook.png' /></a></li>
                         <li><a href="https://www.twitter.com"><img src='/icons/xtwitter.png' /></a></li>
                         <li><a href="/login"><img src='/icons/spotify.png' /></a></li>
-                        <li><a href="/signup"><img src='/icons/singup.png' /></a></li>
+                        <li><a href="/signup"><img src='/icons/singup.svg' /></a></li>
                     </ul>
                 </div>
                 <div id='main-img'></div>

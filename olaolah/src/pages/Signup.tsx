@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './index.css';
+import '../index.css';
 
 interface FormData {
   name: string;
@@ -9,6 +9,9 @@ interface FormData {
 }
 
 const Signup: React.FC = () => {
+
+  const [action, setAction] = useState<string>("Sign Up");
+
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -72,10 +75,9 @@ const Signup: React.FC = () => {
 
   return (
     <div className="sign-up-form">
-      <h1>Create an Account</h1>
+      <h1>{action}</h1>
       <form onSubmit={handleSubmit}>
-        
-        <label htmlFor="name">Full Name</label>
+        {action==="Login"?<div></div>:<div><label id='nameSignup' htmlFor="name">Full Name</label>
         <input
           type="text"
           id="name"
@@ -84,7 +86,8 @@ const Signup: React.FC = () => {
           onChange={handleChange}
           placeholder="Enter your full name"
         />
-        {errors.name && <span className="error">{errors.name}</span>}
+        {errors.name && <span className="error">{errors.name}</span>}</div>}
+        
         
         <label htmlFor="email">Email</label>
         <input
@@ -108,7 +111,7 @@ const Signup: React.FC = () => {
         />
         {errors.password && <span className="error">{errors.password}</span>}
         
-        <label htmlFor="confirmPassword">Confirm Password</label>
+        {action==="Login"?<div></div>:<div><label htmlFor="confirmPassword">Confirm Password</label>
         <input
           type="password"
           id="confirmPassword"
@@ -119,9 +122,10 @@ const Signup: React.FC = () => {
         />
         {errors.confirmPassword && (
           <span className="error">{errors.confirmPassword}</span>
-        )}
-
-        <button type="submit" id='submit-signup'>Sign Up</button>
+        )}</div>}
+        
+        <button type="submit" className={action==="Login"?"submit grey":"submit-signup"} onClick={()=>{setAction("Sign up")}}>Sign Up</button>
+        <button type="submit" className={action==="Sign up"?"submit grey":"submit-signup"} onClick={()=>{setAction("Login")}}>Login</button>
       </form>
 
       {backendMessage && <div className={backendMessage.includes('Error') ? 'error' : 'success'}>{backendMessage}</div>}
