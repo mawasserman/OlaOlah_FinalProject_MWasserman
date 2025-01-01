@@ -8,6 +8,9 @@ body {
 
 h1, h2, h3 {
   color: rgb(40, 145, 139);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
@@ -144,8 +147,13 @@ nav {
 }
 
 .contact-form button:hover, 
-#submit-signup button:hover {
+.submit-signup button:hover {
   background-color: #d834bd;
+}
+
+.gray {
+  background-color: #6d6d6d;
+  color: white;
 }
 
 .error {
@@ -156,7 +164,7 @@ nav {
 }
 
 
-.latestEpisode {
+.latestEpisode, .episodesPage {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -259,7 +267,7 @@ nav {
   max-width: 800px;
 }
 
-.episode {
+.episode{
   display: flex;
   align-items: center;
   gap: 20px;
