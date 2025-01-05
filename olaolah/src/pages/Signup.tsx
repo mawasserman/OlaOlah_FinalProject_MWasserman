@@ -47,7 +47,7 @@ const Signup: React.FC = () => {
     }
   
     try {
-      const response = await fetch("http://localhost:3001/api/signup", { 
+      const response = await fetch("http://localhost:3002/api/signup", { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,7 +86,7 @@ const Signup: React.FC = () => {
           onChange={handleChange}
           placeholder="Enter your full name"
         />
-        {errors.name && <span className="error">{errors.name}</span>}</div>}
+        </div>}{errors.name && <span className="error">{errors.name}</span>}
         
         
         <label htmlFor="email">Email</label>
@@ -120,10 +120,10 @@ const Signup: React.FC = () => {
           onChange={handleChange}
           placeholder="Confirm your password"
         />
-        {errors.confirmPassword && (
+       </div>}
+         {errors.confirmPassword && (
           <span className="error">{errors.confirmPassword}</span>
-        )}</div>}
-        
+        )}
         <button type="submit" className={action==="Login"?"submit grey":"submit-signup"} onClick={()=>{setAction("Sign up")}}>Sign Up</button>
         <button type="submit" className={action==="Sign up"?"submit grey":"submit-signup"} onClick={()=>{setAction("Login")}}>Login</button>
       </form>
