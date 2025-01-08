@@ -47,7 +47,7 @@ const Signup: React.FC = () => {
     }
   
     try {
-      const response = await fetch("http://localhost:3002/api/signup", { 
+      const response = await fetch("http://localhost:3002/auth/api/signup", { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,9 +60,9 @@ const Signup: React.FC = () => {
       });
   
       if (response.ok) {
-        console.log("Signup successful!");
+        alert("Signup successful!");
       } else {
-        console.error("Error with signup");
+        alert("Error with signup");
       }
     } catch (error) {
       console.error("Error:", error);
