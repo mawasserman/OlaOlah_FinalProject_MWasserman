@@ -5,22 +5,18 @@ interface FormData {
   name: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  confirmPassword?: string;
 }
 
 const Signup: React.FC = () => {
-
   const [action, setAction] = useState<string>("Sign Up");
-
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
-
   const [errors, setErrors] = useState<Partial<FormData>>({});
-
   const [backendMessage, setBackendMessage] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,62 +29,71 @@ const Signup: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     const newErrors: Partial<FormData> = {};
-    if (!formData.name) newErrors.name = "Name is required";
+    if (action === "Sign Up" && !formData.name) newErrors.name = "Name is required";
     if (!formData.email) newErrors.email = "Email is required";
     if (!formData.password) newErrors.password = "Password is required";
-    if (formData.password !== formData.confirmPassword)
+    if (action === "Sign Up" && formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match";
-  
+    }
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
-  
+
     try {
-      const response = await fetch("http://localhost:3002/auth/api/signup", { 
+      const endpoint = action === "Sign Up" ? "signup" : "login";
+      const response = await fetch(`http://localhost:3002/auth/api/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: formData.name,
+          name: action === "Sign Up" ? formData.name : undefined,
           email: formData.email,
           password: formData.password,
         }),
       });
-  
+
+      const data = await response.json();
+
       if (response.ok) {
-        alert("Signup successful!");
+        setBackendMessage(action === "Sign Up" ? "Signup successful!" : "Login successful!");
+        if (action === "Login") {
+          localStorage.setItem("token", data.token);
+        }
+        setFormData({ name: "", email: "", password: "", confirmPassword: "" });
+        setErrors({});
       } else {
-        alert("Error with signup");
+        setBackendMessage(data.message || "Error with login/signup");
       }
     } catch (error) {
       console.error("Error:", error);
+      setBackendMessage("Server error. Please try again later.");
     }
-  
-    setFormData({ name: "", email: "", password: "", confirmPassword: "" });
-    setErrors({});
   };
-  
 
   return (
     <div className="sign-up-form">
       <h1>{action}</h1>
       <form onSubmit={handleSubmit}>
-        {action==="Login"?<div></div>:<div><label id='nameSignup' htmlFor="name">Full Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Enter your full name"
-        />
-        </div>}{errors.name && <span className="error">{errors.name}</span>}
-        
-        
+        {action === "Sign Up" && (
+          <>
+            <label htmlFor="name">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Enter your full name"
+            />
+            {errors.name && <span className="error">{errors.name}</span>}
+          </>
+        )}
+
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -99,7 +104,7 @@ const Signup: React.FC = () => {
           placeholder="Enter your email"
         />
         {errors.email && <span className="error">{errors.email}</span>}
-        
+
         <label htmlFor="password">Password</label>
         <input
           type="password"
@@ -110,25 +115,45 @@ const Signup: React.FC = () => {
           placeholder="Enter your password"
         />
         {errors.password && <span className="error">{errors.password}</span>}
-        
-        {action==="Login"?<div></div>:<div><label htmlFor="confirmPassword">Confirm Password</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-          placeholder="Confirm your password"
-        />
-       </div>}
-         {errors.confirmPassword && (
-          <span className="error">{errors.confirmPassword}</span>
+
+        {action === "Sign Up" && (
+          <>
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              placeholder="Confirm your password"
+            />
+            {errors.confirmPassword && (
+              <span className="error">{errors.confirmPassword}</span>
+            )}
+          </>
         )}
-        <button type="submit" className={action==="Login"?"submit grey":"submit-signup"} onClick={()=>{setAction("Sign up")}}>Sign Up</button>
-        <button type="submit" className={action==="Sign up"?"submit grey":"submit-signup"} onClick={()=>{setAction("Login")}}>Login</button>
+
+        <button type="submit" className="submit">
+          {action}
+        </button>
+        <button
+          type="button"
+          className="toggle"
+          onClick={() => {
+            setAction(action === "Sign Up" ? "Login" : "Sign Up");
+            setErrors({});
+            setBackendMessage(null);
+          }}
+        >
+          Switch to {action === "Sign Up" ? "Login" : "Sign Up"}
+        </button>
       </form>
 
-      {backendMessage && <div className={backendMessage.includes('Error') ? 'error' : 'success'}>{backendMessage}</div>}
+      {backendMessage && (
+        <div className={backendMessage.includes("Error") ? "error" : "success"}>
+          {backendMessage}
+        </div>
+      )}
     </div>
   );
 };
