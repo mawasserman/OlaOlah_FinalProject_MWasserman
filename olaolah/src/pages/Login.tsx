@@ -1,71 +1,106 @@
-// import React, { useState } from "react";
-// import { useAuth } from "../useAuth";
-// import { useAuthenticatedFetch } from "../useAuthenticatedFetch.tsx";
-// import './index.css';
+/* <div className="sign-up-form"> */
 
-// const Login = () => {
-//   const { login, logout, user, isAuthenticated } = useAuth();
-//   const fetchWithAuth = useAuthenticatedFetch();
-//   const [username, setUsername] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [data, setData] = useState(null);
-//   const [error, setError] = useState("");
+import React, { useState } from "react";
+import '../index.css';
 
-//   const handleLogin = async () => {
-//     try {
-//       await login(username, password);
-//       alert("Login successful!");
-//     } catch (error) {
-//       setError("Login failed. Please check your credentials.");
-//     }
-//   };
+interface LoginFormData {
+  email: string;
+  password: string;
+}
 
-//   const handleLogout = () => {
-//     logout();
-//   };
+const Login: React.FC = () => {
+  const [formData, setFormData] = useState<LoginFormData>({
+    email: "",
+    password: "",
+  });
 
-//   const fetchData = async () => {
-//     try {
-//       const response = await fetchWithAuth("https://api.example.com/protected", {
-//         method: "GET",
-//       });
-//       const result = await response.json();
-//       setData(result);
-//     } catch (error) {
-//       setError("Error fetching data.");
-//     }
-//   };
+  const [errors, setErrors] = useState<Partial<LoginFormData>>({});
+  const [backendMessage, setBackendMessage] = useState<string | null>(null);
 
-//   return (
-//     <div className="auth-form">
-//       <h1>Authentication Example</h1>
-//       {isAuthenticated ? (
-//         <div>
-//           <p>Welcome, {user?.name}</p>
-//           <button onClick={handleLogout}>Logout</button>
-//         </div>
-//       ) : (
-//         <div>
-//           <input
-//             type="text"
-//             placeholder="Username"
-//             value={username}
-//             onChange={(e) => setUsername(e.target.value)}
-//           />
-//           {error && <span className="error">{error}</span>}
-//           <input
-//             type="password"
-//             placeholder="Password"
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//           />
-//           <button onClick={handleLogin}>Login</button>
-//         </div>
-//       )}
-//       <button onClick={fetchData}>Fetch Protected Data</button>
-//       {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
-//     </div>
-//   );
-// };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-// export default Login;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const newErrors: Partial<LoginFormData> = {};
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!formData.password) newErrors.password = "Password is required";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3002/auth/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      if (response.ok) {
+        setBackendMessage("Login successful!");
+      } else {
+        const errorMessage = await response.text();
+        setBackendMessage(errorMessage || "Error during login");
+      }
+    } catch (error) {
+      setBackendMessage("An unexpected error occurred");
+      console.error("Error:", error);
+    }
+
+    setFormData({ email: "", password: "" });
+    setErrors({});
+  };
+
+  return (
+    <div>
+      <h1>Login</h1>
+      <div className="sign-up-form">
+      <form  onSubmit={handleSubmit}>
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Enter your email"
+        />
+        {errors.email && <span className="error">{errors.email}</span>}
+
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="Enter your password"
+        />
+        {errors.password && <span className="error">{errors.password}</span>}
+
+        <button type="submit" className="submit-login">Login</button>
+      </form>
+      </div>
+      {backendMessage && (
+        <div className={backendMessage.includes("Error") ? "error" : "success"}>
+          {backendMessage}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Login;
